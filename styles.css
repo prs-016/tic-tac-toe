@@ -1,1 +1,482 @@
+@font-face {
+  font-family: 'cubic';
+  src: url('fonts/cubic.ttf') format('truetype');
+}
 
+@font-face {
+  font-family: 'crackman';
+  src: url('fonts/Crackman.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'gothic';
+  src: url('fonts/GothicByte.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'sply';
+  src: url('fonts/Splywaj-gwl1.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'shock';
+  src: url('fonts/Shock\ Surgent.otf') format('opentype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  display: grid;
+  grid-template-rows: 2fr 6fr 2fr;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("images/light.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  color: #333;
+  transition: background 0.5s ease, color 0.3s ease;
+  transition: color 2s ease, box-shadow 0.3s ease;
+}
+
+body.dark{
+    background-image: url("images/dark.jpg");
+    color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: color 2s ease, transform 0.5s ease, cursor 0.2s ease,box-shadow 0.3s ease;
+}
+
+.header .title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-left: 20vh;
+  font-family: shock;
+}
+
+.header button{
+    margin-right: 10vh;
+    width: 12.5rem;
+    height: 2.75rem;
+    font-family: cubic;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 1;
+    background: rgba(0, 0, 0, 0.425);
+    border: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.375); 
+    cursor: pointer;
+    transition: color 2s ease, transform 0.5s ease, cursor 0.2s ease,box-shadow 0.3s ease;
+}
+
+body.dark .header #toggleTheme{
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.18); 
+    color: white;
+}
+
+.header button:hover {
+  transform: scale(1.05);    
+}
+.header button:active {
+  transform: scale(0.98); 
+  transition: transform 2.5s ease-in, transform 2.5s ease-out;
+  cursor: wait; 
+
+}
+.header button:focus {
+  outline: none;
+}
+
+
+.main {
+  padding: 2rem;
+  text-align: center;
+}
+
+.desc {
+  margin-bottom: 1rem;
+  font-size: 4vh;
+  font-family: gothic;
+  margin-bottom: 5vh;
+}
+
+.score {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+  margin: 0;
+  font-family: sply;
+  font-size: 4vh;
+}
+
+.P1Wins, .Ties, .P2Wins{
+    display: flex;
+}
+
+p{
+    font-family: gothic;
+    font-size: 4vh;
+}
+
+.Players {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin: 2rem 0;
+  
+}
+
+.Player1, .Player2 {
+  background: rgba(126, 126, 126, 0.514);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgb(0, 0, 0);
+  text-align: center;
+  transition: transform 1s ease-out;
+}
+
+body.dark .Player1, body.dark .Player2{
+    background: rgba(210, 210, 210, 0.514);
+    box-shadow: 0 4px 15px rgb(255, 255, 255);
+}
+
+.Player1 {
+    transform: translateX(0); 
+}
+
+.Player2 {
+    transform: translateX(0); 
+}
+
+.Player1 select, .Player2 select{
+    display: flex;
+    gap: 0rem;
+
+}
+.Player1 button, .Player2 button{
+    width: 11vh;
+    height: 8vh;
+    margin: 0vh;
+    padding: 0px;
+    border:0px;
+    font-family: cubic;
+    font-size: 1rem;
+    text-align: center;
+    flex-shrink: 1;
+    background: rgba(0, 0, 0, 0.57);
+    color: rgb(255, 255, 255); 
+    cursor: pointer;
+    transition: color 2s ease, transform 0.5s ease, cursor 0.2s ease,box-shadow 0.3s ease, width 0.5s ease;
+}
+
+body.dark .Player1 button, body.dark .Player2 button
+{
+    color: black;
+    background: rgb(255, 255, 255,0.57); 
+}
+
+.select .Select-Player{
+    border-right:1px solid rgba(255, 255, 255, 0.315);
+}
+
+body.dark .select .Select-Player{
+    border-right:1px solid rgba(0, 0, 0, 0.315);
+}
+.select .Select-Player.clicked, .select .Select-Player:hover{
+    transform: scale(1.2);
+    box-shadow: 0px 4px 16px rgba(0, 75, 105, 0.375); 
+    background: rgba(0, 75, 105, 0.54);
+    margin-right: 0.5rem;
+    border-right: 0px;
+}
+
+.select .Select-Bot.clicked, .select .Select-Bot:hover{
+    box-shadow: 0px 4px 16px rgba(255, 0, 0, 0.375); 
+    background: rgba(255, 0, 0, 0.54);
+    margin-right: 0.5rem;
+    border-right: 0px;
+    transform: translateX(5px) scale(1.2);
+}
+
+.Player1:hover, .Player2:hover {
+  transform: translateY(-10px);
+}
+
+.Player1 img, .Player2 img {
+  width: 25vh;
+  height: 25vh;
+  object-fit: contain;
+}
+
+.Players .start{
+    display:none;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    
+}
+
+.Players .start .VS{
+    font-family: sply;
+    font-size: 8vh;
+    color:rgb(188, 4, 4);
+    margin-top: 5vh;
+    transform: translateY(-100vh);
+    transition: transform 1s ease-out;
+
+}
+
+.start button{
+    width: 20vh;
+    height: 10vh;
+    font-family: cubic;
+    font-size: 1rem;
+    text-align: center;
+    flex-shrink: 1;
+    background: rgba(8, 191, 8, 0.57);
+    border: 0;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 16px rgb(8, 191, 8,0.375); 
+    cursor: pointer;
+    transition: color 2s ease, transform 1s ease-out, cursor 0.2s ease,box-shadow 0.3s ease;
+    align-self:flex-end;
+    justify-content: end;
+    transform: translateY(-100vh);
+    margin-top: 10vh;
+}
+
+.start button[disabled]{
+    background: rgba(8, 191, 8, 0.3);
+    box-shadow: 0 4px 16px rgb(8, 191, 8,0.175);
+    color: rgba(255, 255, 255, 0.575);
+}
+body.dark .start button{
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.18); 
+    color: white;
+}
+
+.start button:hover {
+  transform: scale(1.05);    
+}
+.start button:active {
+  transform: scale(0.98); 
+  transition: transform 2.5s ease-in, transform 2.5s ease-out;
+  cursor: wait; 
+
+}
+.start button:focus {
+  outline: none;
+}
+
+.container {
+  margin-top: 1rem;
+}
+
+.container input {
+  padding: 0.5rem;
+  border: 1px solid #999;
+  border-radius: 6px;
+  width: 100%;
+}
+
+
+.text{
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 1vh;
+    font-family: gothic;
+    font-size: 4vh;
+    margin:0vh;
+    color: wheat;
+}
+
+.text div.won{
+    display: none;
+}
+.grid {
+  display: none;
+  grid-template-columns: repeat(3, 10vh);
+  grid-template-rows: repeat(3, 10vh);
+  gap: 8px;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+.grid > div {
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.grid > div:hover {
+  transform: scale(1.05);
+  background: #e0e0e0;
+}
+
+
+.modal {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modal .Win {
+  background: rgb(255, 255, 255, 0.25);
+  padding: 2rem;
+  border-radius: 12px;
+  font-size: 5vh;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.375); 
+  font-family: shock;
+}
+
+.playagain {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.playagain button.yes, .playagain button.no{
+  width: 20vh;
+    height: 10vh;
+    font-family: cubic;
+    font-size: 1rem;
+    text-align: center;
+    flex-shrink: 1;
+    background: rgba(8, 191, 8, 0.57);
+    border: 0;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 16px rgb(8, 191, 8,0.375); 
+    cursor: pointer;
+    transition: color 2s ease, transform 0.5s ease, cursor 0.2s ease,box-shadow 0.3s ease;
+    align-self:flex-end;
+    justify-content: end;
+    margin-top: 10vh;
+}
+
+.playagain button.no{
+    background: rgba(191, 8, 8, 0.57);
+    box-shadow: 0 4px 16px rgb(191, 8, 8,0.375);
+}
+body.dark .playagain button{
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.18); 
+    color: white;
+}
+
+.playagain button:hover {
+  transform: scale(1.1);   
+  background-color: rgba(3, 124, 124, 0.56); 
+  box-shadow: 0 4px 16px rgb(3, 124, 124);
+}
+.playagain button:active {
+  transform: scale(0.98); 
+  transition: transform 2.5s ease-in, transform 2.5s ease-out;
+  cursor: wait; 
+
+}
+.playagain button:focus {
+  outline: none;
+}
+
+
+.footer{
+    min-height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.copyright{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.copytext{
+    color:rgb(255, 255, 255);
+    font-family: gothic;
+    font-size: 1.25rem;
+    transition: color 2s ease;
+}
+
+body.dark .copytext{
+    color: white;
+}
+
+.github{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    object-fit: cover;       
+    overflow: hidden;
+    justify-content: center;
+    border-radius: 50%;
+    align-items: center;
+    margin: 0px;
+    
+    
+}
+.github img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 1.75s ease;
+  flex-shrink:0;
+}
+.github img:hover{
+    transform: scale(1.2) rotate(180deg);
+    transition: transform 0.3s ease-in, transform 2.5s ease-out;
+}
+
+
+
+
+
+body.dark .header,
+body.dark .footer,
+body.dark .Player1,
+body.dark .Player2,
+body.dark .grid > div {
+  background: rgba(0,0,0,0.35);
+  color: #f0f0f0;
+}

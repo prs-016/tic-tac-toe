@@ -1,1 +1,100 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIC-TAC-TOE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class = "header">
+        <div class="title">TIC TAC TOE</div>
+        <button id="toggleTheme">🌙 Toggle Theme</button>
+    </div>
+    <div class="main">
+        <div class ="desc">
+            First to 5 wins. Choose Player 1 for ❌ and Player 2 for ⭕ or bot v bot and leave it to chance.
+        </div>
+        <div class="score">
+            <div class="P1Wins">
+                Player1 Wins<p>&nbsp;:&nbsp;</p>0
+            </div>
+            <div class="Ties">
+                Ties<p>&nbsp;:&nbsp;</p>0
+            </div>
+            <div class="P2Wins">
+                Player2 Wins<p>&nbsp;:&nbsp;</p>0
+            </div>
+        </div>
+        <div class="Players">
+            <div class="Player1">
+                <img src="./images/player.gif" alt="PlayerOne">
+                <div class="select">
+                    <button class="Select-Player">Player</button><button class = "Select-Bot">Bot</button>
+                </div>
+                <div class="container">
+                    <label for="Name1">
+                        <input type="text" placeholder="Enter Name for Player 1:"  id="Name1"  pattern = ".*\S.*" required="required">
+                    </label>
+                </div>
+            </div>
+            <div class="start">
+                <div class="VS">
+                    VS
+                </div>
+                <button class="startbtn" type="submit" disabled>Start Game</button>
+            </div>
+            <div class="Player2">
+                <img src="./images/bot.gif" alt="Playertwo">
+                <div class="select">
+                   <button class="Select-Player">Player</button><button class = "Select-Bot">Bot</button>
+                </div>
+                <div class="container">
+                    <label for="Name2">
+                        <input type="text" placeholder="Enter Name for Player 2:"  id="Name2"  pattern = ".*\S.*" required="required">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text">
+        <div class = "won">Player1 ❌ wins</div>
+        <div class = "move">Player1's turn ❌</div>
+    </div>
+    <div class="grid">
+        <div class="grid1"></div>
+        <div class="grid2"></div>
+        <div class="grid3"></div>
+        <div class="grid4"></div>
+        <div class="grid5"></div>
+        <div class="grid6"></div>
+        <div class="grid7"></div>
+        <div class="grid8"></div>
+        <div class="grid9"></div>
+    </div>
+    <div class="modal">
+        <div class="content">
+            <div class ="Win">Player1 Won. Wohooo. Play Again? :) </div>
+            <div class = "playagain">
+                <button class="yes">
+                    Yes uwu
+                </button>
+                <button class="no">No uwu</button>
+            </div>
+        </div>
+    </div>
+    <div class = "footer">
+        <div class = "copyright">
+            <div class = "copytext">
+                Copyright<span> &#169 </span>Prakhar_Shah <script>document.write(new Date().getFullYear());</script> @
+            </div>
+            <div class = "github">
+                <a href="https://github.com/prs-016/tic-tac-toe#" target="_blank" rel="noopener">
+                    <img src="./images/github.png" , alt="github">
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
